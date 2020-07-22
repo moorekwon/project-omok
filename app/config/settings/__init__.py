@@ -1,7 +1,7 @@
 import os
 
 SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
-if not SETTINGS_MODULE or SETTINGS_MODULE == 'config.settings':
+if SETTINGS_MODULE == 'config.settings':
     from .dev import *
-else:
+elif not SETTINGS_MODULE:
     from .prod import *
