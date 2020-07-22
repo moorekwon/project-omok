@@ -2,3 +2,6 @@
 /.github
 /.gitignore
 /secrets.json
+/.config/dev/*
+/app/config/settings/dev.py
+/app/config/wsgi/dev.py
