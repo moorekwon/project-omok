@@ -45,5 +45,5 @@ jobs:
         script: |
           docker pull raccoonhj33/project-omok
           docker stop omok && docker system prune
-          docker run -d -it --rm -p 80:80 -p 443:443 --name omok -v ~/.aws:/root/.aws -v /etc/letsencrpyt:/etc/letsencrypt raccoonhj33/project-omok bash
+          docker run -d -it --rm -p 80:80 -p 443:443 --name omok -v ~/.aws:/root/.aws -v /etc/letsencrypt:/etc/letsencrypt -v ~/secrets.json:/srv/project-omok/secrets.json raccoonhj33/project-omok bash
           docker exec omok supervisord -c /srv/project-omok/.config/prod/supervisord.conf
