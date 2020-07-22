@@ -6,10 +6,6 @@ RUN		    apt-get -y -qq update && \
 
 RUN         apt -y install nginx
 
-
-# prod 환경설정
-RUN          export DJANGO_SETTINGS_MODULE=conf.settings.prod
-
 # requirements.txt 복사
 COPY	    ./requirements.txt /tmp/
 RUN    		pip install -r /tmp/requirements.txt
