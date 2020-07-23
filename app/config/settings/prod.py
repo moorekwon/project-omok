@@ -8,3 +8,12 @@ INSTALLED_APPS += []
 ALLOWED_HOSTS += [
     '*'
 ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('*', 6379)],
+        },
+    },
+}
