@@ -44,7 +44,7 @@ jobs:
         key: ${{ secrets.OMOK_PEM }}
         script: |
           docker pull raccoonhj33/project-omok
-          docker stop omok redis && docker -f system prune
+          docker stop omok redis && docker system prune -f
           docker run -d --rm -p 6379:6379 --name redis redis:5
           docker run -d -it --rm -p 80:80 -p 443:443 --name omok -e DJANGO_SETTINGS_MODULE=config.settings.prod -v ~/.aws:/root/.aws -v /etc/letsencrypt:/etc/letsencrypt -v ~/secrets.json:/srv/project-omok/secrets.json raccoonhj33/project-omok bash
           docker exec omok supervisord -c /srv/project-omok/.config/supervisord.conf
