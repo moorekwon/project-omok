@@ -17,6 +17,10 @@ WORKDIR     /srv/project-omok/app
 # Nginx 기본 설정 삭제 & 설정 파일 복사
 RUN         rm /etc/nginx/sites-enabled/default
 RUN         cp /srv/project-omok/.config/omok.nginx /etc/nginx/sites-enabled/
+RUN         cp /srv/project-omok/daphne.service /etc/systemd/system/
 RUN         mkdir /var/log/gunicorn
+RUN         mkdir /var/log/daphne
+RUN         systemctl enable daphne
+RUN         systemctl start daphne
 
 CMD         /bin/bash
