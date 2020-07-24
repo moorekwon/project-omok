@@ -20,7 +20,5 @@ RUN         cp /srv/project-omok/.config/omok.nginx /etc/nginx/sites-enabled/
 RUN         cp /srv/project-omok/daphne.service /etc/systemd/system/
 RUN         mkdir /var/log/gunicorn
 RUN         mkdir /var/log/daphne
-RUN         systemctl enable daphne
-RUN         systemctl start daphne
 
 CMD         /bin/bash
