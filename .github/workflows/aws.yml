@@ -42,8 +42,4 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.OMOK_PEM }}
-        script: |
-          docker pull raccoonhj33/project-omok
-          docker-compose down
-          docker-compose up
-          docker exec omok supervisord -c /srv/project-omok/.config/supervisord.conf
+        script: ./deploy.sh
