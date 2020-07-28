@@ -36,6 +36,7 @@ jobs:
         repository: raccoonhj33/project-omok
         tags: latest
 
+    - uses: actions/checkout@v2
     - name: Login to EC2 and Server Init
       uses: appleboy/ssh-action@master
       with:
