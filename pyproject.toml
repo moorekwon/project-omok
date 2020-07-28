@@ -16,6 +16,7 @@ channels_redis = "^3.0.1"
 pyopenssl = "^19.1.0"
 twisted = "^20.3.0"
 service_identity = "^18.1.0"
+docker-compose = "^1.26.2"
 
 [tool.poetry.dev-dependencies]
 

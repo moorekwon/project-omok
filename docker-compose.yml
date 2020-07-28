@@ -1,0 +1,24 @@
+version: "3"
+services:
+    database:
+        image: redis
+        container_name: redis
+        ports:
+            - 6379:6379
+
+    omok:
+        image: hyeonggeun2/test
+        container_name: omok
+        depends_on:
+            - database
+        ports:
+            - 80:80
+            - 443:443
+            - 8443:8443
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /var/lib/letsencrypt:/var/lib/letsencrypt
+            - ~/secrets.json:/srv/project-omok/secrets.json
+        environment:
+            - DJANGO_SETTINGS_MODULE=config.settings.prod
+        command: 'daphne -e ssl:8443:privateKey=/etc/letsencrypt/live/hyegg.xyz/privkey.pem:certKey=/etc/letsencrypt/live/hyegg.xyz/cert.pem config.asgi:application'
