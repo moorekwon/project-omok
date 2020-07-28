@@ -396,18 +396,6 @@ hyperlink = ">=17.1.1"
 incremental = ">=16.10.1"
 "zope.interface" = ">=4.4.2"
 
-[package.dependencies.idna]
-optional = true
-version = ">=0.6,<2.3 || >2.3"
-
-[package.dependencies.pyopenssl]
-optional = true
-version = ">=16.0.0"
-
-[package.dependencies.service_identity]
-optional = true
-version = ">=18.1.0"
-
 [package.extras]
 all_non_platform = ["pyopenssl (>=16.0.0)", "service_identity (>=18.1.0)", "idna (>=0.6,<2.3 || >2.3)", "pyasn1", "cryptography (>=2.5)", "appdirs (>=1.4.0)", "bcrypt (>=3.0.0)", "soappy", "pyserial (>=3.0)", "h2 (>=3.0,<4.0)", "priority (>=1.1.0,<2.0)", "pywin32 (!=226)"]
 conch = ["pyasn1", "cryptography (>=2.5)", "appdirs (>=1.4.0)", "bcrypt (>=3.0.0)"]
@@ -450,7 +438,7 @@ test = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 
 [metadata]
-content-hash = "d41fb5ad8d801821d2aa175341a73e58b5a0de82096fd16e57242c7f320ba675"
+content-hash = "ede8997d093b414fdfd220352a21be52ede3ebc7253a8ddb57dc2311cc035cda"
 python-versions = "^3.7"
 
 [metadata.files]

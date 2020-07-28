@@ -13,7 +13,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('*.hyegg.xyz', 6379)],
+            "hosts": [('54.180.86.122', 6379)],
         },
     },
 }
