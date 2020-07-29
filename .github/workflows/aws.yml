@@ -37,4 +37,4 @@ jobs:
         tags: latest
 
     - name: Execute docker-compose
-      run: ssh -o StrictHostKeyChecking=no -i ${{ secrets.OMOK_PEM }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -C ./deploy.sh
+      run: ssh -o StrictHostKeyChecking=no ${{ secrets.OMOK_PEM }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -C ./deploy.sh
