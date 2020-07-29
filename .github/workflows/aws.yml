@@ -3,7 +3,7 @@ on:
     branches: 
       - deploy
 
-name: Deploy to Amazon ECS
+name: Deploy to Amazon EC2
 
 jobs:
   deploy:
@@ -35,11 +35,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: raccoonhj33/project-omok
         tags: latest
-      
-    - name: Login to EC2 and Server Init
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.OMOK_PEM }}
-        script: ./deploy.sh
+
+    - name: Execute docker-compose
+      run: ssh -i ${{ secrets.OMOK_PEM }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -C ./deploy.sh
