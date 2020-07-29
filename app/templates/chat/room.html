@@ -10,15 +10,26 @@
 <input id="chat-message-submit" type="button" value="Send">
 {{ room_name|json_script:"room-name" }}
 <script>
+        let chatSocket;
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
-        const chatSocket = new WebSocket(
-            'wss://'
-            + window.location.hostname
-            + ':8443/ws/chat/'
-            + roomName
-            + '/'
-        );
+        if (window.location.hostname === 'hyegg.xyz'){
+            chatSocket = new WebSocket(
+                'wss://'
+                + window.location.hostname
+                + ':8443/ws/chat/'
+                + roomName
+                + '/'
+            );
+        } else{
+            chatSocket = new WebSocket(
+                'ws://'
+                + window.location.host
+                + '/ws/chat/'
+                + roomName
+                + '/'
+            );
+        }
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
