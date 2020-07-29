@@ -5,3 +5,5 @@
 /.config/dev/*
 /app/config/settings/dev.py
 /app/config/wsgi/dev.py
+/docker-compose.yml
+/deploy_dev.sh
