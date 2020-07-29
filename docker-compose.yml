@@ -7,7 +7,7 @@ services:
             - 6379:6379
 
     omok:
-        image: hyeonggeun2/test
+        image: raccoonhj33/project-omok
         container_name: omok
         depends_on:
             - database
