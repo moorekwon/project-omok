@@ -36,5 +36,12 @@ jobs:
         repository: raccoonhj33/project-omok
         tags: latest
 
-    - name: Execute docker-compose
-      run: ssh -o StrictHostKeyChecking=no ${{ secrets.OMOK_PEM }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -C ./deploy.sh
+    - uses: actions/checkout@v2
+    - name: Docker pull
+      run: docker pull raccoonhj33/project-omok
+    - name: Docker clear
+      run: docker-compose down && docker system prune -f
+    - name: Exec docker-compose 
+      run: docker-compose up
+    - name: Exec docker omok
+      run: docker exec omok python manage.py collectstatic --noinput && docker exec omok supervisord -c /srv/project-omok/.config/supervisord.conf
