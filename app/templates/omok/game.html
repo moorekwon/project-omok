@@ -403,19 +403,27 @@
       const [row, col] = target.id.split(',');
       if (!target.classList.contains('space-box') || target.innerHTML) return;
 
-      render();
       chatSocket.send(JSON.stringify({
-        'message': `{{ request.user }} ${col} ${row}`
+        'message': `{{ request.user }} ${row} ${col}`
         }));
     };
 
+    let current_user = '';
+    let prev_user = '';
+    let count = 1;
+
     chatSocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
-        split_msg = data.message.split(' ');
-        stateArr[split_msg[2]][split_msg[1]] = 1;
-        render();
-        while(1){
-            
+        console.log(data.message);
+        const split_msg = data.message.split(' ');
+        prev_user = current_user;
+        current_user = split_msg[0];
+
+        if (prev_user !== current_user){
+            stateArr[split_msg[1]][split_msg[2]] = state;
+            checkVictory(`${split_msg[1]}, ${split_msg[2]}`);
+            render();
+            state = state % 2; state++;
         }
     };
 

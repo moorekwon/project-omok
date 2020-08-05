@@ -7,7 +7,3 @@ def waiting_room(request):
 
 def game(request, room_name):
     return render(request, 'omok/game.html', {'room_name': room_name})
-
-# def put_stone(request, room_name):
-#     print(request)
-#     return render(request, 'omok/data.html', {'room_name': room_name})
