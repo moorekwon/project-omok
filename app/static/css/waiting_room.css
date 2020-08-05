@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Yeon Sung', cursive;
+}
+
+html {
+    position: relative;
+}
+
+body {
+    font-size: 25px;
+    padding: 0 100px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    margin: 0 auto;
+    padding: 30px 0;
+    position: relative;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.main_container {
+    border: 1px solid black;
+    height: 600px;
+    width: 1000px;
+}
+
+.menu {
+    border: 1px solid red;
+}
