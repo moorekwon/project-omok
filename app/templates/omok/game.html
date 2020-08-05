@@ -393,8 +393,7 @@
 
     // 웹소켓 만들어서 전송하기
     let chatSocket;
-    //const roomName = JSON.parse(document.getElementById('room-name').textContent);
-    const roomName = 'omok';
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
     if (window.location.hostname === 'hyegg.xyz'){
       chatSocket = new WebSocket(`wss://${window.location.hostname}:8443/ws/omok/${roomName}/`);
     } else{
@@ -404,23 +403,20 @@
       const [row, col] = target.id.split(',');
       if (!target.classList.contains('space-box') || target.innerHTML) return;
 
-      if (state === 1) {
-        if (checkNone(target.id) === 1) {
-          stateArr[row][col] = 3;
-          return;
-        }
-        checkVictory(target.id);
-        stateArr[row][col] = 1;
-        state = 2;
-      } else {
-        checkVictory(target.id);
-        stateArr[row][col] = 2;
-        state = 1;
-      }
       render();
       chatSocket.send(JSON.stringify({
-        'message': `${col}, ${row}`
+        'message': `{{ request.user }} ${col} ${row}`
         }));
+    };
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        split_msg = data.message.split(' ');
+        stateArr[split_msg[2]][split_msg[1]] = 1;
+        render();
+        while(1){
+            
+        }
     };
 
     const checkVictory = (id) => {

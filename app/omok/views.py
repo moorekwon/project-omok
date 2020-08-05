@@ -1,10 +1,13 @@
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'omok/index.html')
+def waiting_room(request):
+    return render(request, 'omok/waiting_room.html')
 
 
-def put_stone(request, room_name):
-    print(request)
-    return render(request, 'omok/data.html', {'room_name': room_name})
+def game(request, room_name):
+    return render(request, 'omok/game.html', {'room_name': room_name})
+
+# def put_stone(request, room_name):
+#     print(request)
+#     return render(request, 'omok/data.html', {'room_name': room_name})
